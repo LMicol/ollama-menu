@@ -1,6 +1,7 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QSystemTrayIcon, QMenu, QAction, QMainWindow
+import subprocess
 from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QApplication, QSystemTrayIcon, QMenu, QAction, QMainWindow
 
 class TrayApp(QMainWindow):
     def __init__(self):
@@ -12,7 +13,12 @@ class TrayApp(QMainWindow):
         
         # Create a menu for the tray icon
         tray_menu = QMenu(self)
-        
+
+        # Restart Ollama action
+        action_restart = QAction("Restart Ollama", self)
+        action_restart.triggered.connect(self.ollama_restart)
+        tray_menu.addAction(action_restart)
+
         # Quit action
         action_quit = QAction("Quit", self)
         action_quit.triggered.connect(self.quit_application)
@@ -24,6 +30,9 @@ class TrayApp(QMainWindow):
     
     def quit_application(self):
         QApplication.quit()
+
+    def ollama_restart(self):
+        subprocess.run(['sudo', 'systemctl', 'restart', 'ollama'])
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
