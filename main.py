@@ -14,6 +14,12 @@ class TrayApp(QMainWindow):
         # Create a menu for the tray icon
         tray_menu = QMenu(self)
 
+        # Start Ollama action
+        action_start = QAction("Start Ollama", self)
+        action_start.triggered.connect(self.ollama_start)
+        action_start.setIcon(QIcon("assets/start.png"))
+        tray_menu.addAction(action_start)
+
         # Restart Ollama action
         action_restart = QAction("Restart Ollama", self)
         action_restart.triggered.connect(self.ollama_restart)
@@ -37,6 +43,9 @@ class TrayApp(QMainWindow):
     
     def quit_application(self):
         QApplication.quit()
+
+    def ollama_start(self):
+        subprocess.run(['sudo', 'systemctl', 'start', 'ollama'])
 
     def ollama_restart(self):
         subprocess.run(['sudo', 'systemctl', 'restart', 'ollama'])
