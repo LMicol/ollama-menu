@@ -19,6 +19,11 @@ class TrayApp(QMainWindow):
         action_restart.triggered.connect(self.ollama_restart)
         tray_menu.addAction(action_restart)
 
+        # Stop Ollama action
+        action_stop = QAction("Stop Ollama", self)
+        action_stop.triggered.connect(self.ollama_stop)
+        tray_menu.addAction(action_stop)
+
         # Quit action
         action_quit = QAction("Quit", self)
         action_quit.triggered.connect(self.quit_application)
@@ -33,6 +38,9 @@ class TrayApp(QMainWindow):
 
     def ollama_restart(self):
         subprocess.run(['sudo', 'systemctl', 'restart', 'ollama'])
+
+    def ollama_stop(self):
+        subprocess.run(['sudo', 'systemctl', 'stop', 'ollama'])
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
