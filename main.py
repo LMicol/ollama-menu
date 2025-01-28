@@ -17,11 +17,13 @@ class TrayApp(QMainWindow):
         # Restart Ollama action
         action_restart = QAction("Restart Ollama", self)
         action_restart.triggered.connect(self.ollama_restart)
+        action_restart.setIcon(QIcon("assets/restart.png"))
         tray_menu.addAction(action_restart)
 
         # Stop Ollama action
         action_stop = QAction("Stop Ollama", self)
         action_stop.triggered.connect(self.ollama_stop)
+        action_stop.setIcon(QIcon("assets/stop.png"))
         tray_menu.addAction(action_stop)
 
         # Quit action
