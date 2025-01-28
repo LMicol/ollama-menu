@@ -1,3 +1,4 @@
+import os
 import sys
 import subprocess
 from PyQt5.QtGui import QIcon
@@ -6,10 +7,12 @@ from PyQt5.QtWidgets import QApplication, QSystemTrayIcon, QMenu, QAction, QMain
 class TrayApp(QMainWindow):
     def __init__(self):
         super().__init__()
-        
+        # Get current path
+        dir = os.path.dirname(os.path.abspath(__file__))
+
         # Create the system tray icon
         self.tray_icon = QSystemTrayIcon(self)
-        self.tray_icon.setIcon(QIcon("assets/icon.png"))
+        self.tray_icon.setIcon(QIcon(f"{dir}/assets/icon.png"))
         
         # Create a menu for the tray icon
         tray_menu = QMenu(self)
@@ -17,19 +20,19 @@ class TrayApp(QMainWindow):
         # Start Ollama action
         action_start = QAction("Start Ollama", self)
         action_start.triggered.connect(self.ollama_start)
-        action_start.setIcon(QIcon("assets/start.png"))
+        action_start.setIcon(QIcon(f"{dir}/assets/start.png"))
         tray_menu.addAction(action_start)
 
         # Restart Ollama action
         action_restart = QAction("Restart Ollama", self)
         action_restart.triggered.connect(self.ollama_restart)
-        action_restart.setIcon(QIcon("assets/restart.png"))
+        action_restart.setIcon(QIcon(f"{dir}/assets/restart.png"))
         tray_menu.addAction(action_restart)
 
         # Stop Ollama action
         action_stop = QAction("Stop Ollama", self)
         action_stop.triggered.connect(self.ollama_stop)
-        action_stop.setIcon(QIcon("assets/stop.png"))
+        action_stop.setIcon(QIcon(f"{dir}/assets/stop.png"))
         tray_menu.addAction(action_stop)
 
         # Quit action
