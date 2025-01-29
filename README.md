@@ -10,6 +10,6 @@ So, I got pissed off and built this systray app to solve this with one press of 
 
 1. Clone the repo
 2. Install the python requirements `pip install -r requirements.txt`
-3. Run `install.sh` — it’ll create a service to run on startup. 
+3. Run `install.sh` — it’ll create a service to run on startup (You may need to change the `ExecStart` path to your python installation location, you can check that with `whereis python`). 
 
 Want to contribute? Go ahead, feel free to improve this mess.
