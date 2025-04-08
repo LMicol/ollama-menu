@@ -1,4 +1,4 @@
-## Ollama Widget for Linux
+## Ollama Menu Widget for Linux
 
 So, I made this widget for Ollama on Linux because, for some [_unknown_](https://github.com/ollama/ollama/issues/690) reason, the Ollama team decided not to implement a way to stop a model while it's generating a response.
 
