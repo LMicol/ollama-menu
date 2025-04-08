@@ -6,6 +6,9 @@ I was testing DeepSeek R1 14B this morning, and it was running with an _amazing_
 
 So, I got pissed off and built this systray app to solve this with one press of a button.
 
+### Preview:
+![](assets/view.png)
+
 ### Install
 
 1. Clone the repo
